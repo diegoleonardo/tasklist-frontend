@@ -1,0 +1,14 @@
+<form (submit)="editTask($event)">
+    <div class="input-group">
+      <input type="hidden" [(ngModel)]="id" name="todo"/>
+      <input type="text" class="form-control" placeholder="Enter title" (keyup.enter)="newTitle=''" [(ngModel)]="newTitle" name="todo">
+      <hr>
+      <input type="textArea" class="form-control" placeholder="Enter description" (keyup.enter)="description=''" [(ngModel)]="description" name="description">
+    </div>
+    <hr>
+    <div class="input-group">
+      <span class="input-group-btn ">
+        <button class="btn btn-primary " type="submit" [disabled]="newTitle==''">Edit</button>
+      </span>
+    </div>
+  </form>

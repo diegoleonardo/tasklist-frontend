@@ -1,0 +1,42 @@
+<style>
+  .center {
+    text-align: center;
+  }
+
+  .todo-list {
+    background: #e6e6e6;
+    padding: 10px;
+  }
+
+  .completed {
+    text-decoration: line-through;
+    background: #ccc;
+  }
+</style>
+<div class="todo-list">
+  <form (submit)="addTask($event)">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Enter title" (keyup.enter)="newTitle=''" [(ngModel)]="newTitle" name="todo">
+      <hr>
+      <input type="textArea" class="form-control" placeholder="Enter description" (keyup.enter)="description=''" [(ngModel)]="description" name="description">
+    </div>
+    <hr>
+    <div class="input-group">
+      <span class="input-group-btn ">
+        <button class="btn btn-primary " type="submit" [disabled]="newTitle==''">Add</button>
+      </span>
+    </div>
+  </form>
+  <!-- /input-group -->
+
+  <div *ngIf="todos != ''">
+    <br>
+    <ul class="list-group ">
+      <li class="list-group-item " *ngFor="let todo of todos; let i=index" [class.completed]="todo.status == 'DONE'">
+        <a class="badge" (click)="setTaskToDone(todo.id)">DONE</a> {{todo.title}}
+        <a class="badge" (click)="delTask(todo.id)">DELETE</a>
+        <a class="badge" href="/task/{{todo.id}}">EDIT</a>
+      </li>
+    </ul>
+  </div>
+</div>
