@@ -38,7 +38,6 @@ export class EditTaskComponent implements OnInit {
       description: this.description
     };
 
-    this._taskService.editTask(todoObj).subscribe(data => console.log(data));
-    this.router.navigateByUrl('');
+    this._taskService.editTask(todoObj).subscribe(data => this.router.navigateByUrl(''));
   }
 }
